@@ -29,7 +29,13 @@ export default class AutoCompleteExampleSimple extends React.Component {
      console.log(account);
      axios.get(`https://api.github.com/users/${account}`)
       .then(function (response) {
+        let Img = response.data.avatar_url;
+        let Followers = response.data.followers;
+        let Following = response.data.following;
          console.log(response);
+         console.log(Img);
+         console.log(Followers);
+         console.log(Following);
         })
       // .catch(function (error) {
       //    console.log(error);
@@ -62,6 +68,12 @@ export default class AutoCompleteExampleSimple extends React.Component {
         />
 
         <FlatButtonExampleSimple />
+
+        <img src="{this.state.Img}" />
+        <ul>
+          <li>{this.state.Followers}</li>
+          <li>{this.state.Following}</li>
+        </ul>
       </form>
     );
   }
